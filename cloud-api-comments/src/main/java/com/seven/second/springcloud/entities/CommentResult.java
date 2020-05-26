@@ -1,10 +1,12 @@
 package com.seven.second.springcloud.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class CommentResult<T> {
     private Integer code;
     private String message;
@@ -12,11 +14,5 @@ public class CommentResult<T> {
 
     public CommentResult(Integer code, String message) {
         this(code, message, null);
-    }
-
-    public CommentResult(Integer code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
     }
 }
