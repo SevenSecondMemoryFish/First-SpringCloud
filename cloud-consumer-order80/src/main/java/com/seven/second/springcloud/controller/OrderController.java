@@ -29,5 +29,4 @@ public class OrderController {
     public CommentResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id,CommentResult.class);
     }
-
 }
