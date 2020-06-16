@@ -11,3 +11,10 @@ eureka:
     service-url:
       # defaultZone: http://localhost:7001/eureka   # 单机版
       defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+
+# open-feign 设置超时时间
+ribbon:
+  # 建立连接后从服务读取到可用资源的所用的时间
+  ReadTimeout: 5000
+  # 建立连接所用的时间，适用于网络状况正常情况下，两端连接所用的时间
+  ConnectTimeout: 5000

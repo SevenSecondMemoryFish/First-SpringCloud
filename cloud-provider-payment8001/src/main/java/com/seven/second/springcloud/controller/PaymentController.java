@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -64,10 +65,20 @@ public class  PaymentController {
             map = new HashMap();
             map.put("name", instance.getInstanceId());
             map.put("host", instance.getHost());
-            map.put("port",instance.getPort());
-            map.put("url",instance.getUri());
+            map.put("port", instance.getPort());
+            map.put("url", instance.getUri());
             list.add(map);
         }
-        return new CommentResult(200,"查询成功",list);
+        return new CommentResult(200, "查询成功", list);
+    }
+
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeginTimeout() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return servicePort;
     }
 }

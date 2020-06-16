@@ -20,4 +20,12 @@ public class OrderFeginController {
     public CommentResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         return paymentFeginService.getPaymentById(id);
     }
+
+    @GetMapping(value = "/consumer/payment/feign/timeout")
+    public String paymentFeginTimeout() {
+        /**
+         * openfeign-ribbon 客户端一般默认等待1秒钟，就必需拿到数据
+         */
+        return paymentFeginService.paymentFeginTimeout();
+    }
 }
