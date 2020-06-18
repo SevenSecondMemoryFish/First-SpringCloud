@@ -8,9 +8,9 @@ eureka:
     fetch-registry: false
     service-url:
       # 集群板写法
-      defaultZone: http://eureka7002.com:7002/eureka/
-      # 单机版
-      # defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      # defaultZone: http://eureka7002.com:7002/eureka/
+      #单机版
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
 #  server:
 #    # 关闭保护模式，保护模式： 保证不可用的服务不被及时清除，默认是true表示开启自我保护
