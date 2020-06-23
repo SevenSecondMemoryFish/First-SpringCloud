@@ -39,7 +39,7 @@ public class PaymentService {
     /**-----------服务熔断-----------*/
     /**
      * 1.开启熔断服务
-     * 2。在窗口期内，请求次数超过10次，或者失败的百分比大于60讲开启服务熔断
+     * 2。在窗口期内，请求次数超过10次，并且失败的百分比大于60讲开启服务熔断
      */
     @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback", commandProperties = {
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),// 开启熔断
