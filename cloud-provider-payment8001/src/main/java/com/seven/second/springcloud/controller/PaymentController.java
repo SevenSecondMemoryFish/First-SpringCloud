@@ -42,10 +42,15 @@ public class  PaymentController {
     public CommentResult getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null) {
-            return new CommentResult(200,"查询成功, port: " + servicePort,payment);
+            return new CommentResult(200, "查询成功, port: " + servicePort, payment);
         } else {
-            return new CommentResult(500,"未查询到数据",null);
+            return new CommentResult(500, "未查询到数据", null);
         }
+    }
+
+    @GetMapping(value = "/payment/lb")
+    public String getPaymentLb() {
+        return servicePort;
     }
 
     @GetMapping(value = "/payment/discovery")
