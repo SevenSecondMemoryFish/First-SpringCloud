@@ -26,9 +26,9 @@ spring:
             # - Between=2020-06-27T18:35:05.565496+08:00[Asia/Shanghai], 2020-06-28T19:35:05.565496+08:00[Asia/Shanghai] # 标识需要在这个连个时间点之间的，才可以匹配到这个路由
             # - Cookie=username,sevensecond # 标识Cookie里面必需是有一个username，值是sevensecond的时候，才匹配到路由，注意：Cookie值其实可以是一个正则表达式,curl http://localhost:9527/payment/lb --cookie "username=sevensecond"
             # - Host=**.seven.second.com # 标识host标识必需**.seven.second.com才可以匹配到
-            - Header=X-Request-id, \d+  # header 里面必需有个X-Request-id，并且值是个正整数
+            # - Header=X-Request-id, \d+  # header 里面必需有个X-Request-id，并且值是个正整数
             - Method=GET    # Method 必需是get请求
-            - Query=id, \d+ # 请求参数是username，值是正整数才可以  #curl http://localhost:9527/payment/lb\?id\=12 -H "X-Request-id:20"
+            # - Query=id, \d+ # 请求参数是username，值是正整数才可以  #curl http://localhost:9527/payment/lb\?id\=12 -H "X-Request-id:20"
 
 eureka:
   client:
