@@ -45,7 +45,6 @@ public class  PaymentController {
             return new CommentResult(500, "未查询到数据", null);
         }
     }
-
     @GetMapping(value = "/payment/lb")
     public String getPaymentLb() {
         return servicePort;
