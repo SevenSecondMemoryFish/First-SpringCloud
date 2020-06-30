@@ -1,0 +1,26 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master
+      name: config
+      profile: dev
+      uri: http://localhost:3344
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+  # bootstrap.yml
+  # bootstrap.yml 是系统级别的，优先级比较高
+  # applocation.yml 是用户级别的资源配置中心
+
+  # spring cloud 会创建一个『Bootstrap Context』，作为Spring 应用的『Application Context』的父上下文。初始化的时候。『Bootstap Context』负责从外部源
+  #   加载配置属性，并解析配置。这两个上下文共享一个从外部获取的『Emvironment』
+
+  # 『Bootstrap』属于高优先级，默认情况下，他们不会被本地配置覆盖，『Bootstrap Context』 和『Application Context』有着不同的约定，『bootstrap.yml』是比『application.yml』先加载
