@@ -16,6 +16,13 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
 
+#  暴露监控端口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
   # bootstrap.yml
   # bootstrap.yml 是系统级别的，优先级比较高
   # applocation.yml 是用户级别的资源配置中心
