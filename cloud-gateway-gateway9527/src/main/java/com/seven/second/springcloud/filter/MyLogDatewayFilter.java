@@ -12,8 +12,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Date;
 
-@Component
-@Slf4j
+ @Slf4j
 /// 标识过滤器的加载顺序，order 越小，越先加载
 @Order(0)
 public class MyLogDatewayFilter implements GlobalFilter {
