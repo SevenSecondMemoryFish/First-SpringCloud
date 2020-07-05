@@ -1,0 +1,21 @@
+server:
+  port: 3377
+spring:
+  application:
+    name: config-nacos-client
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
+
+
+
+# nacos config 配置的dataId规则
+# ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#   对等下来就是
+# config-nacos-client-dev.yml
