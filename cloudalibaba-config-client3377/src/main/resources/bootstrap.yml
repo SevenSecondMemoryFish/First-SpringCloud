@@ -22,6 +22,7 @@ spring:
 #   对等下来就是
 # config-nacos-client-dev.yml
 
+# 我们可以是有那个dataId和groud 以及namespace 来区分环境
 
 # 配置namespace和group
 # namespace > group > dataid
