@@ -12,6 +12,8 @@ spring:
       config:
         server-addr: localhost:8848
         file-extension: yml
+        group: DEV_GROUP
+        namespace: 6e1b06a6-e344-4e4c-aa11-855e4caacfc7
 
 
 
@@ -19,3 +21,10 @@ spring:
 # ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
 #   对等下来就是
 # config-nacos-client-dev.yml
+
+
+# 配置namespace和group
+# namespace > group > dataid
+# 配置后，代表回去找namespace下面的，groud下面的dataId,对应的配置信息
+# namespace 默认是public
+# groud 默认是 DEFAULT_GROUP
