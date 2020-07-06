@@ -13,19 +13,66 @@ spring:
         server-addr: localhost:8848
         file-extension: yml
         group: DEV_GROUP
-        namespace: 6e1b06a6-e344-4e4c-aa11-855e4caacfc7
+        namespace: 89ca6a3f-5139-4ea5-a120-0cb41362cfb1
 
 
 
 # nacos config 配置的dataId规则
 # ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
 #   对等下来就是
-# config-nacos-client-dev.yml
+        # config-nacos-client-dev.yml
 
-# 我们可以是有那个dataId和groud 以及namespace 来区分环境
+        # 我们可以是有那个dataId和groud 以及namespace 来区分环境
 
-# 配置namespace和group
-# namespace > group > dataid
-# 配置后，代表回去找namespace下面的，groud下面的dataId,对应的配置信息
-# namespace 默认是public
-# groud 默认是 DEFAULT_GROUP
+        # 配置namespace和group
+        # namespace > group > dataid
+        # 配置后，代表回去找namespace下面的，groud下面的dataId,对应的配置信息
+        # namespace 默认是public
+        # groud 默认是 DEFAULT_GROUP
+
+
+
+        # nacos 连接mysql
+        # docker run -d \
+        # -e MODE=standalone \
+        # -e SPRING_DATASOURCE_PLATFORM=mysql \
+        # -e MYSQL_SERVICE_HOST=192.168.31.42 \
+        # -e MYSQL_SERVICE_PORT=3306 \
+        # -e MYSQL_SERVICE_USER=root \
+        # -e MYSQL_SERVICE_PASSWORD=12345678 \
+        # -e MYSQL_SERVICE_DB_NAME=nacos_config \
+        # -p 8848:8848 \
+        # --restart=always \
+        # --name nacosServer \
+        # nacos/nacos-server
+
+        # MYSQL_SERVICE_HOST 表明是mysql的地址
+        # MYSQL_SERVICE_PORT  表明mysql的端口
+        # MYSQL_SERVICE_USER  表明mysql的用户
+        # MYSQL_SERVICE_PASSWORD  表明mysql用户的密码
+        # MYSQL_SERVICE_DB_NAME   表明mysql数据库名称
+
+
+        #注意如果mysql使用的是8.0+的
+        # 1.方式，我们可以下载源码，修改最外层的pox的musq数据库版本，以及com.alibaba.nacos.naming.healthchec下的 MysqlHealthCheckProcessor的到爆
+        # 将import com.mysql.jdbc.jdbc2.optional.MysqlDataSource; 修改为import com.mysql.cj.jdbc.MysqlDataSource;
+        # 使用maven 从新打包，并且将替换原有包里面的nacos-server.jar，
+        # 如果使用docker安装的nacos时，需进行docker exec -it nacosServer bash 进入docker虚拟盘
+        # 注意：nacosServer 是你启动nacos设置的名称，我上面将它设置为了nacosServer
+      # 并且需要再进入target，将新打的nacos-server.jar替换原来的
+      # docker cp /本机路径/nacos-server.jar nacosServer:/home/nacos/targer/nacos-server.jar
+    # 并且再nacos下的application.properties里面的url添加上useSSL=true&serverTimezone=GMT 也就是需要添加上时区
+    # 启动即可
+
+    # 2.方式，添加mysql的连接器。
+    # 1.docker exec -it nacosServer bash 进入nacos 虚拟盘
+    # 2. 创建plugins/mysql文件夹,
+    #2.1 mkdir plugins
+    #2.2 cd plugins
+    #2.3 mkdir mysql
+    # 3.将mysql-connector-java-8.0.19.jar(项目中已经存在，刚好本机安装的mysql也是8.0.19) 文件夹复制到/mysql 下面也是可以的
+    #3.1：docker cp /本机路径/mysql-connector-java-8.0.19.jar nacosServer:/home/nacos/plugins/mysql/mysql-connector-java-8.0.19.jar
+    #3.2 nacosServer 标识你启动的nacos的name
+    #3.3 各个版本mysql的连接器https://dev.mysql.com/downloads/connector/j/
+
+# 本人使用方式2，可以启动nacos
