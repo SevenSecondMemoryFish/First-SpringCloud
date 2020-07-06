@@ -17,7 +17,7 @@ spring:
 
 
 
-# nacos config 配置的dataId规则
+        # nacos config 配置的dataId规则
 # ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
 #   对等下来就是
         # config-nacos-client-dev.yml
