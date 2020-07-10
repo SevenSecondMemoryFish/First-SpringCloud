@@ -32,13 +32,13 @@ spring:
 </dependencies>
 ```
 > 下载安装，目前我是用的是`docker`安装
-```ruby
-/// 下载 sentinel
+```dockerfile
+# 下载 sentinel
 docker pull bladex/sentinel-dashboard
 ```
 > 运行sentinel
-```ruby
-/// 使用docker 运行sentinel，端口号为8858
+```dockerfile
+# 使用docker 运行sentinel，端口号为8858
 docker run --name sentinel -d -p 8858:8858 -d bladex/sentinel-dashboard
 ```
 > 安装完成，以及运行完成后，可以访问`http:localhost:8858`，即可看到`Sentinel`的界面，密码和账户都为：sentinel
