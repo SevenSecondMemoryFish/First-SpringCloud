@@ -32,12 +32,12 @@ spring:
 </dependencies>
 ```
 > 下载安装，目前我是用的是`docker`安装
-```dockerfile
+```docker
 # 下载 sentinel
 docker pull bladex/sentinel-dashboard
 ```
 > 运行sentinel
-```dockerfile
+```docker
 # 使用docker 运行sentinel，端口号为8858
 docker run --name sentinel -d -p 8858:8858 -d bladex/sentinel-dashboard
 ```
