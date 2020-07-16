@@ -2,7 +2,7 @@
 项目只是学习使用
 
 ### Sentinel 使用
-> sentinel 是阿里出的关于服务熔断、服务降级、服务治理等的一个防护组件。[Sentinel](https://github.com/alibaba/Sentinel)
+> sentinel 是阿里出的关于服务熔断、服务降级、服务治理等的一个防护组件。[Sentinel](https://github.com/alibaba/Sentinel) Github
 
 1.本项目中，创建的服务`cloudalibaba-sentinel-service8401`,使用了`Sentinel`进项了防护
 ```yaml
@@ -32,13 +32,17 @@ spring:
 </dependencies>
 ```
 > 下载安装，目前我是用的是`docker`安装
-```docker
+```dockerfile
 # 下载 sentinel
 docker pull bladex/sentinel-dashboard
 ```
 > 运行sentinel
-```docker
+```dockerfile
 # 使用docker 运行sentinel，端口号为8858
 docker run --name sentinel -d -p 8858:8858 -d bladex/sentinel-dashboard
 ```
 > 安装完成，以及运行完成后，可以访问`http:localhost:8858`，即可看到`Sentinel`的界面，密码和账户都为：sentinel
+
+**注意：**
+- 当设置流控规则的时候
+    - 设置的是`/testA` 关联`/testB`的时候，如果资源`/testB`资源访问达到阀值的时候。`/testA`则会挂掉。而不是`/testB`
