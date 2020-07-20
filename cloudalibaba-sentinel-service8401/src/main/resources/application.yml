@@ -8,6 +8,15 @@ spring:
       discovery:
         server-addr: localhost:8848
     sentinel:
+      datasource:
+        ds1:
+          nacos:
+            # 一下配置的信息，需要和nacos 里面的配置信息一样
+            serverAddr: localhost:8848 # nacos 地址
+            dataId: ${spring.application.name} # nacos篇日志中心ID
+            groupId: DEFAULT_GROUP # nacos 分组id
+            dataType: json # 类型json
+            ruleType: flow # 流控规则
       transport:
         dashboard: localhost:8858
         port: 8719
@@ -19,3 +28,28 @@ management:
       exposure:
         include: "*"
 
+# fegin 允许sentinel
+feign:
+  sentinel:
+    enabled: true
+
+
+# sentinel 配置再nacos里面的数据，如果不知道参数什么意思或者不知道怎么配置，可以先用sentinel配置一下，F12拦截下请求接口
+#[
+#  {
+#    # 资源名称
+#    "resource": "/byResouce",「
+#    # 来源的应用
+#    "limitApp": "default",
+#    # 阀值类型 0标识线程数，1表述Qps
+#    "grade": 1,
+#    # 单机阀值
+#    "count": 1,
+#    # 流控模式 0标识直接，1标识关联 2 标识链路
+#    "strategy": 0,
+#    # 是否集群
+#    "clusterMode": false,
+#    # 流控效果，0标识快速失败 1标识warm up 2 标识排队
+#    "controlBehavior": 0
+#  }
+#]
