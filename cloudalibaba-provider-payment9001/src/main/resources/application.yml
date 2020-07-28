@@ -47,7 +47,6 @@ management:
         # MYSQL_SERVICE_PASSWORD  表明mysql用户的密码
         # MYSQL_SERVICE_DB_NAME   表明mysql数据库名称
 
-
         #注意如果mysql使用的是8.0+的
         # 1.方式，我们可以下载源码，修改最外层的pox的musq数据库版本，以及com.alibaba.nacos.naming.healthchec下的 MysqlHealthCheckProcessor的到爆
         # 将import com.mysql.jdbc.jdbc2.optional.MysqlDataSource; 修改为import com.mysql.cj.jdbc.MysqlDataSource;
